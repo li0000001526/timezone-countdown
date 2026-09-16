@@ -118,14 +118,16 @@ body{font-family:"PingFang SC","Microsoft YaHei",Inter,system-ui,sans-serif;back
   .cd-form input,.cd-form select{width:100%}
 }
 
-  /* seo / FAQ panel */
-  section.seo{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px 22px;margin-top:36px;box-shadow:var(--shadow)}
-  section.seo h2{font-size:17px;margin:0 0 4px;color:var(--ink)}
-  section.seo h3{font-size:13.5px;font-weight:700;color:var(--indigo);margin:16px 0 5px}
-  section.seo p{font-size:13px;color:var(--ink2);line-height:1.9;margin:0}
+  /* seo / FAQ panel — reuses the global .sec-title header language (colored bar + 19px h2)
+     and .picker/.cd-box card language so it looks identical to the tools above */
+  section.seo .seo-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px 20px;box-shadow:var(--shadow)}
+  section.seo h3{font-size:14px;font-weight:700;color:var(--indigo);margin:16px 0 5px}
+  section.seo .seo-card h3:first-child{margin-top:0}
+  section.seo p{font-size:13px;color:var(--ink2);line-height:1.85;margin:0 0 14px}
+  section.seo .seo-card > p:last-child{margin-bottom:0}
   section.seo p b{color:var(--coral)}
-  section.seo .seo-links{list-style:none;padding:0;margin:10px 0 4px}
-  section.seo .seo-links li{font-size:12.5px;color:var(--ink2);padding:6px 0;line-height:1.6;border-bottom:1px dashed var(--line)}
+  section.seo .seo-links{list-style:none;padding:0;margin:0}
+  section.seo .seo-links li{font-size:12.5px;color:var(--ink2);padding:7px 0;line-height:1.6;border-bottom:1px dashed var(--line)}
   section.seo .seo-links li:last-child{border-bottom:none}
   section.seo a{color:var(--teal);text-decoration:none}
   section.seo a:hover{text-decoration:underline}
@@ -207,26 +209,30 @@ body{font-family:"PingFang SC","Microsoft YaHei",Inter,system-ui,sans-serif;back
 </div>
 
   <section class="seo">
-    <h2 data-tz="seo.h1">时区时差指南与常见问题</h2>
-    <h3 data-tz="seo.q1">两个城市的时差到底怎么算？</h3>
-    <p data-tz="seo.q1p">时差由两个城市所在 <b>IANA 时区</b>（如 Asia/Shanghai 与 America/New_York）的当前 UTC 偏移量相减得出。整点时区差通常为 0–14 小时，但印度（UTC+5:30）、尼泊尔（UTC+5:45）等存在半小时偏移；夏令时切换期间，欧美城市间的有效时差会随季节变化 1 小时。</p>
-    <h3 data-tz="seo.q2">夏令时（DST）会影响时差吗？</h3>
-    <p data-tz="seo.q2p">会。美国、欧盟及澳大利亚部分州实行<b>夏令时</b>，春季拨快、秋季拨慢。例如纽约与伦敦的时差在冬令时为 5 小时，夏令时期间变为 4 小时。按固定时差安排日程时，务必确认两地在目标日期是否处于同一夏令时状态。</p>
-    <h3 data-tz="seo.q3">跨时区开会议，什么时候开最友好？</h3>
-    <p data-tz="seo.q3p">取两地<b>工作时段</b>（通常 9:00–18:00）的重叠区：北京与伦敦的重叠约在北京 16:00–18:00（伦敦 8:00–10:00）；北京与纽约的重叠约在北京 20:00–24:00（纽约上午，夏令时）。若跨半球重叠为零，可轮流牺牲：奇数周亚洲早会、偶数周欧美早会。</p>
-    <h3 data-tz="seo.q4">倒计时工具里的"当地时刻"是怎么换算成 UTC 的？</h3>
-    <p data-tz="seo.q4p">你填的是目标城市的当地时刻。工具用浏览器内置的 <b>IANA 时区数据</b>（Intl API）反推该当地时刻对应的 UTC 绝对时间戳，再以你的本地时区显示"等于本地时间几点"。全程无服务器、无网络请求，断网也能计算。</p>
-    <h3 data-tz="seo.q5">为什么有的城市时差是"30 分钟"而不是整点？</h3>
-    <p data-tz="seo.q5p">历史与地理原因：印度标准时间 1946 年起采用 <b>UTC+5:30</b>（兼顾印度 600km 幅宽），尼泊尔为 UTC+5:45，美国阿拉斯加 UTC-9:30，澳大利亚中部时区 UTC+9:30。世界时间对照表里"非整点城市"因此并不罕见。</p>
-    <h2 data-tz="seo.h2ref">时差参考与延伸阅读</h2>
-    <ul class="seo-links">
-      <li data-tz="seo.li1">timeanddate · 世界时钟与城市时差对照：<a href="https://www.timeanddate.com/world-clock/" target="_blank" rel="noopener">world clock</a></li>
-      <li data-tz="seo.li2">IANA Time Zone Database · 官方时区定义：<a href="https://www.iana.org/time-zones" target="_blank" rel="noopener">iana.org/time-zones</a></li>
-      <li data-tz="seo.li3">World Time Buddy · 跨时区会议排期工具：<a href="https://www.worldtimebuddy.com/" target="_blank" rel="noopener">worldtimebuddy.com</a></li>
-      <li data-tz="seo.li4">MDN · Intl.DateTimeFormat 与 IANA 时区支持：<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat" target="_blank" rel="noopener">MDN Intl.DateTimeFormat</a></li>
-    </ul>
-    <div class="seo-friend" data-tz="seo.friend">更多在线工具：<a href="https://li00000.xyz/" target="_blank" rel="noopener">li00000 工具集</a> · <a href="https://tjtkw.li00000.xyz/" target="_blank" rel="noopener">健身体脂计算器</a> · <a href="https://bmuws.li00000.xyz/" target="_blank" rel="noopener">烘焙换算工具</a> · <a href="https://bwzib.li00000.xyz/" target="_blank" rel="noopener">篝火燃料估算</a></div>
-    <p class="seo-fine" data-tz="seo.fine">本页时差基于浏览器 IANA 时区数据库实时计算；涉及法律或合同时间，请以两地政府官方时间为准。</p>
+    <div class="sec-title"><div class="bar" style="background:var(--indigo)"></div><h2 data-tz="seo.h1">时区时差指南与常见问题</h2></div>
+    <div class="seo-card">
+      <h3 data-tz="seo.q1">两个城市的时差到底怎么算？</h3>
+      <p data-tz="seo.q1p">时差由两个城市所在 <b>IANA 时区</b>（如 Asia/Shanghai 与 America/New_York）的当前 UTC 偏移量相减得出。整点时区差通常为 0–14 小时，但印度（UTC+5:30）、尼泊尔（UTC+5:45）等存在半小时偏移；夏令时切换期间，欧美城市间的有效时差会随季节变化 1 小时。</p>
+      <h3 data-tz="seo.q2">夏令时（DST）会影响时差吗？</h3>
+      <p data-tz="seo.q2p">会。美国、欧盟及澳大利亚部分州实行<b>夏令时</b>，春季拨快、秋季拨慢。例如纽约与伦敦的时差在冬令时为 5 小时，夏令时期间变为 4 小时。按固定时差安排日程时，务必确认两地在目标日期是否处于同一夏令时状态。</p>
+      <h3 data-tz="seo.q3">跨时区开会议，什么时候开最友好？</h3>
+      <p data-tz="seo.q3p">取两地<b>工作时段</b>（通常 9:00–18:00）的重叠区：北京与伦敦的重叠约在北京 16:00–18:00（伦敦 8:00–10:00）；北京与纽约的重叠约在北京 20:00–24:00（纽约上午，夏令时）。若跨半球重叠为零，可轮流牺牲：奇数周亚洲早会、偶数周欧美早会。</p>
+      <h3 data-tz="seo.q4">倒计时工具里的"当地时刻"是怎么换算成 UTC 的？</h3>
+      <p data-tz="seo.q4p">你填的是目标城市的当地时刻。工具用浏览器内置的 <b>IANA 时区数据</b>（Intl API）反推该当地时刻对应的 UTC 绝对时间戳，再以你的本地时区显示"等于本地时间几点"。全程无服务器、无网络请求，断网也能计算。</p>
+      <h3 data-tz="seo.q5">为什么有的城市时差是"30 分钟"而不是整点？</h3>
+      <p data-tz="seo.q5p">历史与地理原因：印度标准时间 1946 年起采用 <b>UTC+5:30</b>（兼顾印度 600km 幅宽），尼泊尔为 UTC+5:45，美国阿拉斯加 UTC-9:30，澳大利亚中部时区 UTC+9:30。世界时间对照表里"非整点城市"因此并不罕见。</p>
+    </div>
+    <div class="sec-title"><div class="bar" style="background:var(--teal)"></div><h2 data-tz="seo.h2ref">时差参考与延伸阅读</h2></div>
+    <div class="seo-card">
+      <ul class="seo-links">
+        <li data-tz="seo.li1">timeanddate · 世界时钟与城市时差对照：<a href="https://www.timeanddate.com/world-clock/" target="_blank" rel="noopener">world clock</a></li>
+        <li data-tz="seo.li2">IANA Time Zone Database · 官方时区定义：<a href="https://www.iana.org/time-zones" target="_blank" rel="noopener">iana.org/time-zones</a></li>
+        <li data-tz="seo.li3">World Time Buddy · 跨时区会议排期工具：<a href="https://www.worldtimebuddy.com/" target="_blank" rel="noopener">worldtimebuddy.com</a></li>
+        <li data-tz="seo.li4">MDN · Intl.DateTimeFormat 与 IANA 时区支持：<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat" target="_blank" rel="noopener">MDN Intl.DateTimeFormat</a></li>
+      </ul>
+      <div class="seo-friend" data-tz="seo.friend">更多在线工具：<a href="https://li00000.xyz/" target="_blank" rel="noopener">li00000 工具集</a> · <a href="https://tjtkw.li00000.xyz/" target="_blank" rel="noopener">健身体脂计算器</a> · <a href="https://bmuws.li00000.xyz/" target="_blank" rel="noopener">烘焙换算工具</a> · <a href="https://bwzib.li00000.xyz/" target="_blank" rel="noopener">篝火燃料估算</a></div>
+      <p class="seo-fine" data-tz="seo.fine">本页时差基于浏览器 IANA 时区数据库实时计算；涉及法律或合同时间，请以两地政府官方时间为准。</p>
+    </div>
   </section>
 
 <script id="cityData">
