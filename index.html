@@ -257,7 +257,8 @@ window.tzTitle=function(){var n=0;try{n=(typeof sel!=='undefined')?sel.size:0;}c
 function applyStatic(){
  var d=L();
  document.querySelectorAll('[data-tz]').forEach(function(el){var k=el.getAttribute('data-tz');
-   if(el.getAttribute('data-mode')==='html'){el.innerHTML=d[k]||'';}else{el.textContent=d[k]||'';}});
+   var _v=(d[k]!=null?d[k]:(DICT.zh[k]!=null?DICT.zh[k]:''));
+   if(el.getAttribute('data-mode')==='html'||/<\/?[a-zA-Z][^>]*>/.test(_v)){el.innerHTML=_v;}else{el.textContent=_v;}});
  var q=document.getElementById('q');if(q)q.setAttribute('placeholder',d['ph.city']||'');
  var ops=document.querySelectorAll('#rgn option');
  ['all','asia','europe','america','africa','oceania'].forEach(function(z,i){if(ops[i])ops[i].textContent=d['rgn.'+z]||ops[i].textContent;});
